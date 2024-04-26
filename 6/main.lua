@@ -2,18 +2,13 @@ local signal = require("buttonSignal")
 
 local gpu = peripheral.find("monitor")
 
-local SECRET_CODE = {"2","2","8"}
-local secretCode = {"*","*","*"}
-
-local ButtonItem = {"1","2","3","4","5","6","7","8","9","0","clr"}
+local SECRET_CODE = {"2","2","8"} --your password
+local secretCode = {"*","*","*"} -- current char in string line
+local ButtonItem = {"1","2","3","4","5","6","7","8","9","0","clr"} --all keys
 
 local screenWidth, screenHeight = gpu.getSize()
 
-local coordinate = {}
-
-function Test()
-    print("test")
-end
+local coordinate = {} --all keys with coordinate
 
 function arrayEqual(a1, a2)
     -- Check length, or else the loop isn't valid.
@@ -33,7 +28,7 @@ function arrayEqual(a1, a2)
 end
 
 function PrintCode(spacing)
-    local currentPos = 2
+    local currentPos = 2 -- start value by x coordinate
     if(arrayEqual(secretCode, SECRET_CODE)) then
         gpu.setTextColour(colors.lightBlue)
         gpu.setBackgroundColor(colors.lightGray)
@@ -105,7 +100,7 @@ while true do
             end
             if(str.symb == "clr") then
                 secretCode = {"H", "U", "I"}
-                secretIterator = 1
+                secretIterator = 0
             end
             
             PrintButtonOnScreen(ButtonItem, 1, screenWidth, screenHeight)
